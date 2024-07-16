@@ -1,0 +1,9 @@
+version: '3'
+
+tasks:
+  # 啟動 ElasticSearch
+  elasticsearch:
+    cmds:
+      - docker build -t my_elasticsearch -f ElasticSearch/Dockerfile .
+      - docker rm -f -v elasticsearch || true
+      - docker run -d --name elasticsearch -p 9200:9200 my_elasticsearch
